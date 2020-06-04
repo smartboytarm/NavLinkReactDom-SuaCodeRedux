@@ -11,6 +11,11 @@ import Home from './Routing/Home';
 import Login from './Routing/Login';
 import Register from './Routing/Register';
 import Parent from './HOC/Parent';
+
+//Higher Other Component H.O.C in react
+import {HomeTemplate} from './Routing/Templates/HomeTemplate'
+import { AdminTemplate } from './Routing/Templates/AdminTemplate';
+
 function App() {
   return (
     <div className="App">
@@ -19,12 +24,12 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-          <Route exact path='/' component={Home}/>
-          <Route exact path='/home' component={Home}/>
-          <Route exact path='/login' component={Login}/>
-          <Route exact path='/register' component={Register}/>
-          <Route exact path='/hoc' component={Parent}/>
-          <Redirect to="/home" />
+          <HomeTemplate path="/home" exact component={Home}></HomeTemplate>
+          <HomeTemplate path="/" exact component={Home}></HomeTemplate>
+          <AdminTemplate path="/login" exact component={Login}></AdminTemplate>
+          <HomeTemplate path="/register" exact component={Register}></HomeTemplate>
+          <HomeTemplate path="/hoc" exact component={Parent}></HomeTemplate>
+          {/* <HomeTemplate path="/register" exact component={Register}></HomeTemplate> */}
         </Switch>
       </BrowserRouter>
     </div>
